@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 	private Rigidbody rb;
 	public Text countText;
+	public Text winText;
 	public float speed;
 	private int count;
 
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 		count = 0;
 		setCountText ();
+		winText.text = "";
 	}
 
 	void FixedUpdate() {
@@ -28,6 +30,9 @@ public class PlayerController : MonoBehaviour {
 			other.gameObject.SetActive (false);
 			count = count + 1;
 			setCountText ();
+			if (count >= 9) {
+				winText.text = "You Win!";
+			}
 		}
 	}
 
